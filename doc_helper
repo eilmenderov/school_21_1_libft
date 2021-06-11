@@ -1,0 +1,24 @@
+
+gcc -Wall -Wextra -Werror -I includes tester_libft.c libft.a
+
+
+ft_name_bonus.c
+
+
+git clone https://github.com/saugustu42/test-libft.git
+
+cd test-libft
+
+./clone.sh "YOUR-GIT-REPO"
+
+make norm
+
+make run-my-test
+
+make run-libftest
+
+make run-unit
+
+make grep-printf
+
+make grep-malloc
