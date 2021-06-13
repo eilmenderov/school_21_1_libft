@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vleida <vleida@student.42.fr>              +#+  +:+       +#+         #
+#    By: avchar <avchar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/16 11:18:50 by vleida            #+#    #+#              #
-#    Updated: 2021/04/26 10:31:40 by vleida           ###   ########.fr        #
+#    Updated: 2021/06/14 02:07:17 by avchar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,15 @@ SRCS =	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c	
 BONUS =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c	\
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-OBJS = ${SRCS:.c=.o}
+SRCS_DIR = srcs/
 
-BONUS_OBJS = ${BONUS:.c=.o}
+OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
+
+BONUS_OBJS = ${addprefix ${SRCS_DIR}, ${BONUS:.c=.o}}
 
 NAME = libft.a
 
-HEADER = libft.h
+HEADER = ${addprefix ${SRCS_DIR}, libft.h}
 
 CC = gcc
 RM = rm -f
