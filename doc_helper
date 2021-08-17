@@ -1,4 +1,5 @@
 
+test libft:
 
-gcc -Wall -Wextra -Werror -I includes test_libft.c libft.a
+gcc -Wall -Wextra -Werror -I includes test_libft.c ./libft/libft.a
 

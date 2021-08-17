@@ -6,13 +6,13 @@
 /*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 13:18:15 by vleida            #+#    #+#             */
-/*   Updated: 2021/04/26 11:52:12 by vleida           ###   ########.fr       */
+/*   Updated: 2021/08/16 15:19:55 by vleida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
+int	ft_count_words(char const *s, char c)
 {
 	size_t	i;
 	int		wrd;

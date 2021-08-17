@@ -6,7 +6,7 @@
 /*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 13:47:04 by vleida            #+#    #+#             */
-/*   Updated: 2021/04/22 16:16:48 by vleida           ###   ########.fr       */
+/*   Updated: 2021/08/17 11:26:24 by vleida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,23 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define FD_SIZE	65536
+# define MX_INT		2147483647
+# define MN_INT		-2147483648
+# define FT_ATOI_MN	9223372036854775800
+# define FT_ATOI_MV	9223372036854775807
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+/* standart libft.a */
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -45,11 +57,13 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strdup(const char *src);
+char	*ft_strndup(const char *src, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+int		ft_count_words(char const *s, char c);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -66,4 +80,13 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* get_next_line.c */
+int		get_next_line(int fd, char **line);
+
+/* lib_utils.c */
+size_t	ft_strlen_m(const char *str, int c);
+char	*ft_strjoin_m(char const *ost, char const *buf, int c);
+int		ft_gnl_cheker(char *ost);
+
 #endif

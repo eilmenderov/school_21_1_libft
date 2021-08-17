@@ -12,8 +12,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
-#include "libft.h"
+#include "./libft/srcs/libft.h"
 
 int		ft_cmp(char *s1, char *s2)
 {
