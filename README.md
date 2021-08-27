@@ -8,5 +8,5 @@ opportunity to expand the list of functions with your own. Take the time to expa
 
 test libft:
 
-gcc -Wall -Wextra -Werror -I includes test_libft.c ./libft/libft.a
+git clone https://github.com/Avchar/school_21_1_libft.git && cd school_21_1_libft/lib-unit-test && make && ./run_test
 
