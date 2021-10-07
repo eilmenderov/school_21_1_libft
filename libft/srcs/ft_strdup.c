@@ -1,11 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/11 15:28:55 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/22 13:11:42 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-/*
-**	@brief	allocates memory and copy string to this memory
-**	
-**	@param	src		pointer to string
-**	@return	char*	pointer to new string or NULL
-*/
 char	*ft_strdup(const char *src)
 {
 	char	*temp;

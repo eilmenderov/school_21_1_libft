@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/13 13:47:04 by vleida            #+#    #+#             */
+/*   Updated: 2021/10/06 18:52:32 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
 # include <stdlib.h>
 # include <unistd.h>
 
-# define FD_SIZE	65536
+# define FD_SIZE	1024
 # define MX_INT		2147483647
 # define MN_INT		-2147483648
 # define FT_ATOI_MN	9223372036854775800
@@ -21,7 +33,6 @@ typedef struct s_list
 }					t_list;
 
 /* standart libft.a */
-
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -69,14 +80,19 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int		ft_how_many_char(char *str, char c);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
-/* get_next_line.c */
-int		get_next_line(int fd, char **line);
+/* 2/5 get_next_line_utils.c */
+int		ft_gnl_cheker(char *ost);
+char	*get_next_line(int fd);
 
-/* lib_utils.c */
+/* 5/5 get_next_line.c */
+int		ft_gnl_old(int fd, char **line);
+
+/* 5/5 lib_utils.c */
 size_t	ft_strlen_m(const char *str, int c);
 char	*ft_strjoin_m(char const *ost, char const *buf, int c);
-int		ft_gnl_cheker(char *ost);
 int		ft_ch_for_coinc(char c, char *str);
 void	ft_free_split(char **rez);
 

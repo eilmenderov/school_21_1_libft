@@ -1,14 +1,18 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/19 14:34:47 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/19 15:05:42 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-**	@brief	checks a character is number between '0' and '9'
-**	
-**	@param	c		character
-**	@return	int		0 if tests false, else 1
-*/
 int	ft_isdigit(int c)
 {
-	if (c < '0' || c > '9')
+	if (c < 48 || c > 57)
 		return (0);
 	return (1);
 }

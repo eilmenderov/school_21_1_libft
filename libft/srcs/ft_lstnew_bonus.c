@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 15:07:23 by vleida            #+#    #+#             */
-/*   Updated: 2021/04/19 15:10:53 by vleida           ###   ########.fr       */
+/*   Created: 2021/04/21 14:34:35 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/21 14:47:46 by vleida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
 {
-	if (c < 32 || c > 126)
-		return (0);
-	return (1);
+	t_list	*newlist;
+
+	newlist = malloc(sizeof(t_list));
+	if (!newlist)
+		return (NULL);
+	newlist->content = content;
+	newlist->next = NULL;
+	return (newlist);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lib_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/06 16:07:55 by vleida            #+#    #+#             */
+/*   Updated: 2021/10/06 16:18:37 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
@@ -29,6 +41,20 @@ size_t	ft_strlen_m(const char *str, int c)
 	return (i);
 }
 
+static void	ft_join_helper(char const *s1, char const *s2, int c)
+{
+	if (s1 && (c == 1 || c == 3))
+	{
+		free ((char *)s1);
+		s1 = NULL;
+	}
+	if (s2 && (c == 2 || c == 3))
+	{
+		free ((char *)s2);
+		s2 = NULL;
+	}
+}
+
 /*
 **	@brief	allocates memory and contactination two strings
 **			and free string depending on int c
@@ -40,41 +66,29 @@ size_t	ft_strlen_m(const char *str, int c)
 */
 char	*ft_strjoin_m(char const *s1, char const *s2, int c)
 {
-	size_t	len;
 	size_t	i;
 	size_t	j;
 	char	*rez;
 
-	len = ft_strlen_m(s1, 0) + ft_strlen_m(s2, 0);
-	rez = malloc(sizeof(char) * (len + 1));
+	rez = malloc(sizeof(char) * (ft_strlen_m(s1, 0) + ft_strlen_m(s2, 0) + 1));
 	if (!rez)
 		return (NULL);
 	i = 0;
 	while (s1 && s1[i])
-		rez[i] = s1[i], i++;
+	{
+		rez[i] = s1[i];
+		i++;
+	}
 	j = 0;
 	while (s2 && s2[j])
-		rez[i] = s2[j], i++, j++;
-	rez[i] = 0;
-	if (s1 && (c == 1 || c == 3))
-		free ((char *)s1), s1 = NULL;
-	if (s2 && (c == 2 || c == 3))
-		free ((char *)s2), s2 = NULL;
-	return (rez);
-}
-
-int	ft_gnl_cheker(char *ost)
-{
-	int	i;
-
-	if (!ost)
-		return (1);
-	i = 0;
-	while (*(ost + i) && *(ost + i) != '\n')
+	{
+		rez[i] = s2[j];
 		i++;
-	if (*(ost + i) == '\n')
-		return (0);
-	return (1);
+		j++;
+	}
+	rez[i] = 0;
+	ft_join_helper(s1, s2, c);
+	return (rez);
 }
 
 /*
@@ -110,8 +124,12 @@ void	ft_free_split(char **rez)
 	while (rez[i])
 	{
 		if (rez[i])
-			free(rez[i]), rez[i] = NULL;
+		{
+			free(rez[i]);
+			rez[i] = NULL;
+		}
 		i++;
 	}
-	free(rez), rez = NULL;
+	free(rez);
+	rez = NULL;
 }

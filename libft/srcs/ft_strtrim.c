@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/19 18:27:05 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/22 13:19:48 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	ft_f_start(char const *s1, char const *set)
@@ -49,15 +61,6 @@ static size_t	ft_f_end(char const *s1, char const *set, size_t start)
 	return (i);
 }
 
-/*
-**	@brief	allocates and returns a copy of string 
-**			with the characters specified in delimiters removed
-**			from the beginning and the end of the string.
-**	
-**	@param	s1		pointer to string
-**	@param	set		pointer to string of delimiters
-**	@return	char*	pointer to new truncated string or NULL if allocation fail
-*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*rez;

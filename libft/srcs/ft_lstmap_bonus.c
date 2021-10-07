@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 11:35:39 by vleida            #+#    #+#             */
-/*   Updated: 2021/04/21 10:26:38 by vleida           ###   ########.fr       */
+/*   Created: 2021/04/21 18:10:01 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/21 20:14:28 by vleida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
+	t_list	*buf;
+	t_list	*start;
+	t_list	*newl;
 
-	i = 0;
-	while (i < n)
+	if (!lst)
+		return (NULL);
+	buf = lst;
+	start = ft_lstnew(f(buf->content));
+	if (!start)
+		return (NULL);
+	buf = buf->next;
+	while (buf)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if (((unsigned char *)dst)[i] == (unsigned char)c)
-			return (&((void *)dst)[i + 1]);
-		i++;
+		newl = ft_lstnew(f(buf->content));
+		if (!newl)
+		{
+			ft_lstclear(&start, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&start, newl);
+		buf = buf->next;
 	}
-	return (NULL);
+	return (start);
 }

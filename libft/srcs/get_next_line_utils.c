@@ -1,28 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 11:35:39 by vleida            #+#    #+#             */
-/*   Updated: 2021/04/21 10:26:38 by vleida           ###   ########.fr       */
+/*   Created: 2021/10/06 15:48:24 by vleida            #+#    #+#             */
+/*   Updated: 2021/10/06 16:23:15 by vleida           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int	ft_gnl_cheker(char *ost)
 {
-	size_t	i;
+	int	i;
 
+	if (!ost)
+		return (1);
 	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if (((unsigned char *)dst)[i] == (unsigned char)c)
-			return (&((void *)dst)[i + 1]);
+	while (*(ost + i) && *(ost + i) != '\n')
 		i++;
+	if (*(ost + i) == '\n')
+		return (0);
+	return (1);
+}
+
+char	*get_next_line(int fd)
+{
+	char	*line;
+	int		answ;
+
+	line = NULL;
+	answ = ft_gnl_old(fd, &line);
+	if (answ == -1)
+	{
+		if (line)
+			free(line);
+		return (NULL);
 	}
+	if (line && answ)
+		return (ft_strjoin(line, "\n"));
+	if (line && line[0])
+		return (line);
+	if (line)
+		free(line);
 	return (NULL);
 }

@@ -1,11 +1,15 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/19 14:39:39 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/19 15:05:27 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-**	@brief	tests for any character for which is alphabet or number
-**	
-**	@param	c	character
-**	@return	int	0 if tests false, else 1
-*/
 int	ft_isalnum(int c)
 {
 	if (c > 47 && c < 58)

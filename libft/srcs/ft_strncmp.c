@@ -1,14 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/19 11:50:45 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/22 12:53:27 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-/*
-**	@brief	lexicographically compare two strings. Not more n characters
-**	
-**	@param	s1		pointer to string
-**	@param	s2		pointer to string
-**	@param	len		count bytes
-**	@return	int	zero if strings are identical, 
-**				else difference between two elements (unsinged char)
-*/
 int	ft_strncmp(const char *s1, const char *s2, size_t len)
 {
 	size_t	i;

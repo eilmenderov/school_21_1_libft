@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/06 15:45:39 by vleida            #+#    #+#             */
+/*   Updated: 2021/10/06 16:23:08 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char	*ft_format_line(char *str)
@@ -19,7 +31,10 @@ static char	*ft_format_line(char *str)
 	rez[i] = 0;
 	i = 0;
 	while (str[i] && str[i] != '\n')
-		rez[i] = str[i], i++;
+	{
+		rez[i] = str[i];
+		i++;
+	}
 	return (rez);
 }
 
@@ -32,7 +47,8 @@ static char	*ft_saver(char *ost, int *fl, int i)
 		i++;
 	if (!ost[i])
 	{
-		*fl = 1, free(ost);
+		*fl = 1;
+		free(ost);
 		return (NULL);
 	}
 	rez = malloc(sizeof(char) * (ft_strlen_m(ost, 0) - i + 1));
@@ -44,7 +60,8 @@ static char	*ft_saver(char *ost, int *fl, int i)
 	j = 0;
 	while (ost[i++])
 		rez[j++] = ost[i];
-	rez[j] = 0, free(ost);
+	rez[j] = 0;
+	free(ost);
 	return (rez);
 }
 
@@ -54,7 +71,10 @@ static int	ft_helper(char *buf, int *rdr, int fd)
 	if (*rdr == -1)
 	{
 		if (buf)
-			free(buf), buf = NULL;
+		{
+			free(buf);
+			buf = NULL;
+		}
 		return (1);
 	}
 	buf[*rdr] = 0;
@@ -64,7 +84,10 @@ static int	ft_helper(char *buf, int *rdr, int fd)
 static int	ft_helper_dop(char *buf, char **ost, char ***line, int *fl)
 {
 	if (buf)
-		free(buf), buf = NULL;
+	{
+		free(buf);
+		buf = NULL;
+	}
 	**line = ft_format_line(*ost);
 	if (!(**line))
 		return (1);
@@ -83,7 +106,7 @@ static int	ft_helper_dop(char *buf, char **ost, char ***line, int *fl)
 **	@param	line	delimiter character
 **	@return	int		counts substrings
 */
-int	get_next_line(int fd, char **line)
+int	ft_gnl_old(int fd, char **line)
 {
 	char		*buf;
 	static char	*ost[FD_SIZE];

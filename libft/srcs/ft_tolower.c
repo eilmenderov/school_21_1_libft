@@ -1,11 +1,15 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vleida <vleida@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/19 15:26:40 by vleida            #+#    #+#             */
+/*   Updated: 2021/04/19 15:28:27 by vleida           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-**	@brief	convert char to lowercase if it's uppercase
-**	
-**	@param	c		character
-**	@return	int		character
-*/
 int	ft_tolower(int c)
 {
 	if (c > 64 && c < 91)
